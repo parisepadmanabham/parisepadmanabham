@@ -30,14 +30,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Your payment route
 app.post('/pay', async (req, res) => {
   try {
-    const { amount, currency, source, description } = req.body;
+    const { amount, currency,description } = req.body;
 
     // Create a charge
     const charge = await stripe.charges.create({
-      amount,
-      currency,
-      source,
-      description,
+      Title,
+      paymentmethod,
+      PaymentAuthentication,
+      PaymentConfirmation,
+      RefundProcessing,
+      TransactionHistory,
+      SecurityandCompliance
     });
 
     res.status(200).json(charge);
